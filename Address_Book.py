@@ -14,6 +14,10 @@
    "city" : ...
    ...
   }
+
+
+  enumerate works only on lists
+  use .items() to get key value pairs
 """
 
 class System:
@@ -26,10 +30,21 @@ class System:
   else:
    print("Address Book already exists")
 
+ def find(self, fname: str)->bool:
+  for _, ab_obj in self.data.items():
+   if fname in ab_obj.contacts.keys():
+    print("Found", fname)
+    print(ab_obj.contacts[fname])
+    return True
+  print("NOT found")
+  return False
+  
+  
+
 class AddressBook:
  def __init__(self, name):
-  self.contacts = {}
   self.name = name
+  self.contacts = {}
  
  def add(self, contact):
   if contact["fname"] not in self.contacts:
@@ -44,8 +59,13 @@ class AddressBook:
    print(self.contacts[fname])
   else:
    print(fname + " Contact NOT found")
-  # O(1) Time Complexity
- 
+
+ def __getitem__(self, key):
+  if key in self.contacts:
+   return self.contacts[key]
+  else:
+   return False
+
  def delete(self, fname):
   if fname in self.contacts:
    del self.contacts[fname]
@@ -56,6 +76,9 @@ class AddressBook:
  def display(self):
   for person in self.contacts:
    print(self.contacts[person])
+
+ def __str__(self) -> str:
+  return "This is address book Object"
 
 
 class Contact:
@@ -95,19 +118,19 @@ p3 = Contact("Sarah", "Tancredi", "rue Van Hecke 47", "Torhout")
 p4 = Contact("Michael", "Scofield", "61642 Zulauf Plaza", "Wisconsin")
 p5 = Contact("Lincon", "Burrows", "Studio 66 Miller Parkways", "London")
 p6 = Contact("T", "Bag", "5455 Bauch Pine Suite 150", "East Raheemborough")
-print(p1["fname"])
 book1 = AddressBook("book1")
 book1.add(p1)
 book1.add(p2)
 book1.add(p3)
 book1.add(p4)
-book1.add(p1)
 book1.add(p5)
 book1.add(p6)
-book1.edit_contact("Mayank", "city", "South Park")
-book1.delete("Sarah")
+# book1.edit_contact("Mayank", "city", "South Park")
+# book1.delete("Sarah")
 sys = System()
 sys.add(book1)
+# print(sys.data)
+sys.find("Michael")
 
 
 
