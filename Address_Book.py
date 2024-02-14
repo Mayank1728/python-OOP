@@ -9,7 +9,7 @@
  
  Contact Object
   details = {
-   "fname" : ...
+   "fname" : ...  
    "lname" : ...
    "city" : ...
    ...
@@ -38,8 +38,13 @@ class System:
     return True
   print("NOT found")
   return False
-  
-  
+ 
+ def people_from(self, loc: str)->bool:
+   for _, ab_obj in self.data.items():
+     for name, val in ab_obj.contacts.items():
+       if loc == val["city"] or loc == val["state"]:
+         print(name)
+
 
 class AddressBook:
  def __init__(self, name):
@@ -59,6 +64,7 @@ class AddressBook:
    print(self.contacts[fname])
   else:
    print(fname + " Contact NOT found")
+     
 
  def __getitem__(self, key):
   if key in self.contacts:
@@ -130,7 +136,7 @@ book1.add(p6)
 sys = System()
 sys.add(book1)
 # print(sys.data)
-sys.find("Michael")
+sys.people_from("LA")
 
 
 
