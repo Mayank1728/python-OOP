@@ -51,7 +51,7 @@ class System:
  def total_people_from(self, loc: str):
    count = 0
    for _, ab_obj in self.data.items():
-     for name, val in ab_obj.contacts.items():
+     for _, val in ab_obj.contacts.items():
        if loc == val["city"] or loc == val["state"]:
          count += 1
    print(count, "Person found")
@@ -94,6 +94,9 @@ class AddressBook:
  def display(self):
   for person in self.contacts:
    print(self.contacts[person])
+  
+ def sort(self):
+   dict(sorted(self.contacts.items()))
 
  def __str__(self) -> str:
   return "This is address book Object"
@@ -148,8 +151,8 @@ book1.add(p6)
 sys = System()
 sys.add(book1)
 # print(sys.data)
-sys.people_from("LA")
-sys.total_people_from("London")
-
+# sys.people_from("LA")
+# sys.total_people_from("London")
+book1.sort()
 
 
