@@ -39,11 +39,23 @@ class System:
   print("NOT found")
   return False
  
- def people_from(self, loc: str)->bool:
+ def people_from(self, loc: str):
    for _, ab_obj in self.data.items():
      for name, val in ab_obj.contacts.items():
        if loc == val["city"] or loc == val["state"]:
          print(name)
+         return True
+   print("No one lives here..")
+   return False
+         
+ def total_people_from(self, loc: str):
+   count = 0
+   for _, ab_obj in self.data.items():
+     for name, val in ab_obj.contacts.items():
+       if loc == val["city"] or loc == val["state"]:
+         count += 1
+   print(count, "Person found")
+   return count  
 
 
 class AddressBook:
@@ -120,7 +132,7 @@ class Contact:
   
 p1 = Contact("Mayank", "Mudgal", "3867 Treutel Greens", "LA")
 p2 = Contact("Sucre", "", "49 Paucek Lane", "Detroit")
-p3 = Contact("Sarah", "Tancredi", "rue Van Hecke 47", "Torhout")
+p3 = Contact("Sarah", "Tancredi", "rue Van Hecke 47", "London")
 p4 = Contact("Michael", "Scofield", "61642 Zulauf Plaza", "Wisconsin")
 p5 = Contact("Lincon", "Burrows", "Studio 66 Miller Parkways", "London")
 p6 = Contact("T", "Bag", "5455 Bauch Pine Suite 150", "East Raheemborough")
@@ -137,6 +149,7 @@ sys = System()
 sys.add(book1)
 # print(sys.data)
 sys.people_from("LA")
+sys.total_people_from("London")
 
 
 
