@@ -16,10 +16,20 @@
   }
 """
 
+class System:
+ def __init__(self):
+  self.data = {}
+ 
+ def add(self, ab):
+  if ab.name not in self.data:
+    self.data[ab.name] = ab
+  else:
+   print("Address Book already exists")
 
 class AddressBook:
- def __init__(self):
+ def __init__(self, name):
   self.contacts = {}
+  self.name = name
  
  def add(self, contact):
   if contact["fname"] not in self.contacts:
@@ -86,16 +96,18 @@ p4 = Contact("Michael", "Scofield", "61642 Zulauf Plaza", "Wisconsin")
 p5 = Contact("Lincon", "Burrows", "Studio 66 Miller Parkways", "London")
 p6 = Contact("T", "Bag", "5455 Bauch Pine Suite 150", "East Raheemborough")
 print(p1["fname"])
-book = AddressBook()
-book.add(p1)
-book.add(p2)
-book.add(p3)
-book.add(p4)
-book.add(p1)
-book.add(p5)
-book.add(p6)
-book.edit_contact("Mayank", "city", "South Park")
-book.delete("Sarah")
-# book.display()
+book1 = AddressBook("book1")
+book1.add(p1)
+book1.add(p2)
+book1.add(p3)
+book1.add(p4)
+book1.add(p1)
+book1.add(p5)
+book1.add(p6)
+book1.edit_contact("Mayank", "city", "South Park")
+book1.delete("Sarah")
+sys = System()
+sys.add(book1)
+
 
 
