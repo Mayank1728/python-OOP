@@ -1,6 +1,10 @@
 """
  Overall structure of
  
+ System = {
+  "Adress Book name" : Address Book obj
+ }
+
  AddressBook Object
   contacts = {
    "mayank" : Contact Obj
@@ -76,6 +80,10 @@ class AddressBook:
    print(self.contacts[fname])
   else:
    print(fname + " Contact NOT found")
+ 
+ def sort_by(self, criteria):
+  if criteria in ["city", "state", "zip"]:
+   dict(sorted(self.contacts.items(), key = lambda x: x[1][criteria]))
      
 
  def __getitem__(self, key):
@@ -154,5 +162,8 @@ sys.add(book1)
 # sys.people_from("LA")
 # sys.total_people_from("London")
 book1.sort()
+book1.sort_by("city")
+book1.display()
+# uc 12, 13, 14, 15 remaining
 
 
