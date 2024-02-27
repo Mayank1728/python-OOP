@@ -1,12 +1,12 @@
 # harmonic value
-sum = 0
+add_all = 0
 num = 10
 if num <= 0:
     print("Invalid Input")
 else:
     start = 1
     while num:
-        sum += 1 / start
+        add_all += 1 / start
         num = num - 1
         start = start + 1
-    print("Sum: ", sum)
+    print("Sum: ", add_all)
