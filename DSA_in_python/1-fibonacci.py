@@ -8,22 +8,16 @@
 """
 
 dict = {1: 1, 2: 1}
-def fib(n):
- if(n <= 0):
-  return 0
- if n in dict:
-  return dict[n]
- dict[n] = fib(n-2) + fib(n-1)
- return dict[n]
 
- 
+
+def fib(n):
+    if n <= 0:
+        return 0
+    if n in dict:
+        return dict[n]
+    dict[n] = fib(n - 2) + fib(n - 1)
+    return dict[n]
+
+
 ans = fib(25)
 print(ans)
-
-
-
-
-
-
-
- 

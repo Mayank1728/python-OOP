@@ -1,22 +1,21 @@
-
 class Bank:
+    max_withdraw_limit = 50000
 
-  max_withdraw_limit = 50000
+    def __init__(self, name) -> None:
+        self.name = name
 
-  def __init__(self, name) -> None:
-    self.name = name
+    def deposit(self, amount):
+        pass
 
-  def deposit(self, amount):
-    pass
-  
-  @classmethod
-  def set_withdraw_limit(cls, limit):
-    cls.max_withdraw_limit = limit
+    @classmethod
+    def set_withdraw_limit(cls, limit):
+        cls.max_withdraw_limit = limit
 
-  @staticmethod
-  def utils():
-    pass
-  
+    @staticmethod
+    def utils():
+        pass
+
+
 """
 classes and objects
 instance methods
